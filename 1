@@ -1,0 +1,22 @@
+import qrcode
+
+# Definindo a fórmula em Python
+def calcular_codigo(ano, mes, dia):
+    return (ano * 90) + (mes * 80) + (dia * 90)
+
+# Texto para o QR code que representa a fórmula
+formula_text = "Código = (ano * 90) + (mes * 80) + (dia * 90)"
+
+# Gerando o QR code
+qr = qrcode.QRCode(
+    version=1,
+    error_correction=qrcode.constants.ERROR_CORRECT_L,
+    box_size=10,
+    border=4,
+)
+qr.add_data(formula_text)
+qr.make(fit=True)
+
+# Criando a imagem do QR code
+img = qr.make_image(fill='black', back_color='white')
+img.show()
